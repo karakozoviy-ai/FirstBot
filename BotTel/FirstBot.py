@@ -1,9 +1,8 @@
 from BotToken import  BT
-
-
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
+import Weather
 #Тест
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
@@ -13,7 +12,7 @@ BOT_TOKEN = BT
 bot = Bot(BOT_TOKEN)
 dp = Dispatcher()
 Calories = False
-
+weather = False
 
 # Этот хэндлер будет срабатывать на команду "/start"
 @dp.message(CommandStart())
@@ -44,6 +43,9 @@ async def process_calories_command(message: Message):
     " Я рассчитаю калории на 100 гр продукта\n"
     " Если надо будет выйти из этого режима нажми на кнопку /cancel\n")
     Calories = True
+@dp.message(Command(commands='weather_now'))
+async def process_calories_command(message: Message):
+    await message.answer(Weather.w_today)
 
 @dp.message(Command(commands='cancel'))
 async def process_cancel_command(message: Message):
