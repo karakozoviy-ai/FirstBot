@@ -5,6 +5,9 @@ import asyncio
 from aiogram import Bot, Dispatcher, Router
 from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
+
+
 #Сторонние библиотеки
 from turtledemo.clock import current_day
 import requests
